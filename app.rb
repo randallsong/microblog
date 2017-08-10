@@ -16,6 +16,10 @@ get '/' do
 	erb :login
 end
 
+get '/community' do
+	erb :community
+end
+
 post '/community' do 
 	@user = User.where(fname: params[:fname]).first
 	if @user && @user.pwd == params[:pwd]
