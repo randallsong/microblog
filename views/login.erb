@@ -1,3 +1,4 @@
+<div id="login-box">
 <div class="container">
     <div class="row">
       <div class="twelve columns">
@@ -17,11 +18,11 @@
   </div>
 
 <div id="login-message" class="row">
-	<h1>If you have an account, please log in!</h1>
-	<h1>If you do not have an account, sign up below!</h1>
+	<p>If you have an account, please log in!</p>
+	<p>If you do not have an account, sign up below!</p>
 </div>
-<div class="row">
-	<form>
+<div id="form" class="row">
+	<form method="post" action="/community">
 		<input type="text" name="fname" value="First Name">
 		<br>
 		<input type="password" name="pwd" value="Password">
@@ -29,4 +30,5 @@
 		<input type="submit" name="login" value="Log In">
 		<input type="submit" name="new-account" value="Create New Account">
 	</form>
+</div>
 </div>

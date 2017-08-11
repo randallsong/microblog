@@ -1,3 +1,72 @@
 body{
-	background-color: hotpink;
+	background-image: url("../Images/background.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top;
+	background-color: black;
+}
+
+#login-message{
+	font-size: 24;
+}
+
+#login-box{
+	display: box;
+	position: relative;
+	width: 500px;
+	background-color: pink;
+	border-style: solid;
+	border-width: 30px;
+	border-color: pink;
+	border-radius: 35px;
+	left: 33%;
+	top: 170px;
+}
+
+#community-body{
+	background-image: url("../Images/community-background.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#user-card{
+	background-color: skyblue;
+	display: block;
+	height: 150px;
+	width: 300px;
+	position: absolute;
+	border-style: ridge;
+	border-color: gold;
+	border-radius: 20px;
+}
+
+#avatar{
+	display: block;
+	position: relative;
+	height: 100px;
+	width: 100px;
+	border-style: solid;
+	border-color: gray;
+	left: 10px;
+	top: 10px;
+}
+
+#username{
+	display: block;
+	position: relative;
+	border-bottom: solid;
+	width: 150px;
+	left: 140px;
+	bottom: 30px;
+
+}
+
+#community-background{
+	display: block;
+	position: absolute;
+	width: 70%;
+	height: 100%;
+	background-color: pink;
+	left: 15%;
+
 }
