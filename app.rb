@@ -20,6 +20,15 @@ get '/community' do
 	erb :community
 end
 
+get '/edit' do
+	erb :edit
+end
+
+get '/profile' do
+	erb :profile
+end
+
+
 post '/community' do 
 	@user = User.where(fname: params[:fname]).first
 	if @user && @user.pwd == params[:pwd]
