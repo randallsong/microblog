@@ -1,8 +1,8 @@
 body{
+	background-attachment: fixed;
 	background-image: url("../Images/background.png");
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: top;
 	background-color: black;
 	width: 100%;
 }
@@ -25,9 +25,9 @@ body{
 }
 
 #community-body{
+	background-attachment: fixed;
 	background-image: url("../Images/community-background.png");
 	background-size: cover;
-	background-position: fixed;
 	width: 100%;
 }
 
@@ -36,8 +36,8 @@ body{
 	display: block;
 	height: 150px;
 	width: 300px;
-	left: 20px;
-	top: 20px;
+	left: 250px;
+	top: 50px;
 	position: absolute;
 	border-style: ridge;
 	border-color: gold;
@@ -67,7 +67,7 @@ body{
 
 #community-background{
 	display: block;
-	position: absolute;
+	position: fixed;
 	width: 70%;
 	height: 100%;
 	background-color: pink;
@@ -114,26 +114,32 @@ body{
 	left: 40%;
 }
 
-.edit{
-	font-family: arial;
-	font-size: 36px;
-	display: inline-block;
-	background-color: yellow;
-	color: pink;
-	padding: 10px;
+#edit-button{
+	position: absolute;
+	right: 300px;
+	top: 100px;
 }
 
-.delete{
-	font-family: arial;
-	font-size: 36px;
-	display: inline-block;
-	background-color: orange;
-	color: yellow;
-	padding: 10px;
+#delete-button{
+	position: absolute;
+	right: 300px;
+	top: 150px;
 }
 
 #navbar{
 	position: relative;
 	float: right;
 	right: 10px;
+}
+
+.comment{
+	font-size: 24px;
+	position: relative;
+	left: 30%;
+	display: inline-block;
+	width: 70%;
+	height: 200px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 2px;
 }
