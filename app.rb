@@ -31,7 +31,7 @@ get '/profile' do
 	erb :profile
 end
 
-get 'loginfailed' do
+get '/loginfailed' do
 	erb :loginfailed
 end
 
