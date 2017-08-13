@@ -12,7 +12,7 @@
 			<p>Here is your latest posts:</p>
 
 	<div id="test">
-	<% @posts.each do |post| %>
+	<% @posts.reverse_each do |post| %>
   	<p><%= post.comment %></p>
 	<% end %>
 	</div>
