@@ -23,13 +23,47 @@ get '/community' do
 	erb :community
 end
 
-get 'loginfailed' do
+get '/profile' do
+	@user = User.find(session[:user_id])
+	@posts = Post.all
+	@profiles = Profile.all
+	erb :profile
+end
+
+get '/editprofile' do
+	@user = User.find(session[:user_id])
+	@posts = Post.all
+	@profiles = Profile.all
+	erb :editprofile
+end
+
+get '/loginfailed' do
+	@user = User.find(session[:user_id])
+	@posts = Post.all
+	@profiles = Profile.all
 	erb :loginfailed
 end
 
-get 'signup' do
+get '/newpost' do
+	@user = User.find(session[:user_id])
+	@posts = Post.all
+	@profiles = Profile.all
+	erb :newpost
+end
+
+post '/profile' do
+	@user = User.find(session[:user_id])
+	@comment = Post.create(params[:comment_text])
+end
+
+get '/signup' do
 	erb :signup
 end
+
+# post '/signup' do
+# 	@newuser
+
+# 	@user = User.create(fname: params[:fname])
 
 
 post '/community' do 
