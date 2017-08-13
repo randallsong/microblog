@@ -17,8 +17,18 @@ get '/' do
 end
 
 get '/community' do
+	@user = User.find(session[:user_id])
 	erb :community
 end
+
+get 'loginfailed' do
+	erb :loginfailed
+end
+
+get 'signup' do
+	erb :signup
+end
+
 
 post '/community' do 
 	@user = User.where(fname: params[:fname]).first
@@ -27,7 +37,7 @@ post '/community' do
 		flash[:notice] = "You've been signed in successfully."
 	else
 		flash[:alert] = "Authorization failed"
-		redirect '/login-failed'
+		redirect '/loginfailed'
 	end
 	redirect '/community'
 end
@@ -36,4 +46,8 @@ def current_user
 	if session[:user_id]
 		@current_user = User.find(session[:user_id])
 	end
+end
+
+def display_users
+	User.all
 end
