@@ -1,19 +1,17 @@
 <div id="login-box">
-  <div id="login-message" class="row">
-  	<p>If you have an account, please log in!</p>
-  	<p>If you do not have an account, sign up below!</p>
+  <div id="signup" class="row">
+  	<p>Please, sign up below!</p>
   </div>
-  <div id="form" class="row">
+  <div id="signupform" class="row">
   	<form method="post" action="/community">
   		<input type="text" name="fname" value="First Name">
   		<br>
   		<input type="password" name="pwd" value="Password">
   		<br>
-  		<input type="submit" name="login" value="Log In">
   		<input type="submit" name="new-account" value="Create New Account">
   	</form>
   </div>
-  </div>
+</div>
 
 
 
@@ -34,10 +32,3 @@
       </div>
     </div>
   </div>
-
-
-<div id="test">
-<% @posts.each do |post| %>
-  <h1><%= post.comment %></h1>
-<% end %>
-</div>

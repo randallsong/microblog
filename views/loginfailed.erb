@@ -1,0 +1,21 @@
+<p>You failed to enter</p>
+<a href="/login">click here to try again</a>
+
+
+<div class="container">
+    <div class="row">
+      <div class="twelve columns">
+
+      <% if flash[:notice] %>
+      <div class="flash notice">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="flash alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
