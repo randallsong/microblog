@@ -1,4 +1,9 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="../public/css/micro.css">
+		<title>Community</title>
+	</head>
 	<body id="community-body">
 		<div id="community-background">
 			<div id="user-card">
@@ -6,14 +11,14 @@
 				<div id="username"></div>
 			</div>
 			<div id="welcome">
-				<h1>Welcome Back  <%= @User.fname %> </h1>
+				<h1>Welcome Back  <%= @user.fname %> </h1>
 			</div>
 				<div id="latestposts">
 			<p>Here is your latest posts:</p>
 
 	<div id="test">
 	<% @posts.reverse_each do |post| %>
-  	<p><%= post.comment %></p>
+  	<p class="comment"><%= post.comment %></p>
 	<% end %>
 	</div>
 	
@@ -23,3 +28,4 @@
 			<button>Log Out</button>
 		</div>
 	</body>
+</html>

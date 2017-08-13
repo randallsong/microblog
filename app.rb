@@ -19,7 +19,7 @@ end
 get '/community' do
 	@user = User.find(session[:user_id])
 	@posts = Post.all
-	@profiles = Profile.all
+	@profiles = Profile.find(session[:user_id])
 	erb :community
 end
 
@@ -33,6 +33,7 @@ get '/profile' do
 end
 
 get 'loginfailed' do
+	erb :loginfailed
 end
 
 get '/profile' do
@@ -89,6 +90,8 @@ post '/community' do
 	end
 	redirect '/community'
 end
+
+
 
 def current_user
 	if session[:user_id]
