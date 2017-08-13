@@ -6,10 +6,17 @@
 				<div id="username"></div>
 			</div>
 			<div id="welcome">
-				<h1>Welcome Back  <%= @User.fname %> </h1>
+				<h1>Welcome Back  <%= @user.fname %> </h1>
 			</div>
 				<div id="latestposts">
 			<p>Here is your latest posts:</p>
+
+	<div id="test">
+	<% @posts.each do |post| %>
+  	<p><%= post.comment %></p>
+	<% end %>
+	</div>
+	
 		</div>
 		</div>
 		<div id="log_out_button">

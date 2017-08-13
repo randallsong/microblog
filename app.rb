@@ -18,6 +18,8 @@ end
 
 get '/community' do
 	@user = User.find(session[:user_id])
+	@posts = Post.all
+	@profiles = Profile.all
 	erb :community
 end
 
