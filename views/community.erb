@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html>
-	<head>
-			<title>Community</title>
-	</head>
-	<body>
-	<div id="welcome">
-		<h1>Welcome Back</h1>
+
+	<body id="community-body">
+	<a class="profilebutton" href="/profile">Profile</a>
+		<div id="community-background"></div>
+		<div id="user-card">
+				<div id="avatar"><img src="<%= @profiles.avatar %>" width=100px height=100px></div>
+				<div id="username"><%= @user.fname %></div>
+		<div id="welcome">
+				<h1>Welcome Back  <%= @user.fname %> </h1>
+		</div>
+		<p id="latestposts">Here are the latest posts:</p>
+
+	<div id="test">
+	<% @posts.reverse_each do |post| %>
+	<p class="poster"> Posted by: <%= post.user.fname %></p><br>
+  	<p class="comment"><%= post.comment %></p>
+	<% end %>
 	</div>
 	
+		</div>
+		</div>
+		<div id="log_out_button">
+			<button>Log Out</button>
+		</div>
 	</body>
-</html>
