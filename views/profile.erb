@@ -1,9 +1,11 @@
 	<body id="community-body">
 		<div id="community-background">
-			<div id="profile-avatar"></div>
+			<div id="profile-avatar">
+				<img src="<%= @profiles.avatar %>" width="350px" height= "350px">
+			</div>
 		</div>
 		<div id="profile-user">
-			<p>Username</p>
+			<p><%= @user.fname %></p>
 		</div>
 
 		<div id="log_out_button">
@@ -14,6 +16,11 @@
 		</div>
 		<div id="delete-button">
 			<button>Delete Profile</button>
+		</div>
+		<div id="test">
+			<% @posts.each do |post| %>
+  			<p class="comment"><%= post.comment %></p>
+			<% end %>
 		</div>
 		<script type="text/javascript" src="../public/script.js"></script>
 	</body>

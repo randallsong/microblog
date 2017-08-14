@@ -31,6 +31,11 @@ body{
 	width: 100%;
 }
 
+#latestposts{
+	position: absolute;
+	left: 200px;
+}
+
 #user-card{
 	background-color: skyblue;
 	display: block;

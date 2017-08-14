@@ -28,6 +28,9 @@ get '/edit' do
 end
 
 get '/profile' do
+	@user = User.find(session[:user_id])
+	@profiles = Profile.find(session[:user_id])
+	@posts = Post.find(session[:user_id])
 	erb :profile
 end
 
