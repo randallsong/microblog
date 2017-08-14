@@ -1,15 +1,15 @@
 <body id="community-body">
 		<div id="community-background"></div>
 		<div id="profile-avatar">
-				<img src="<%= @profile.avatar %>" width="100%" height= "100%">
+				<img src="<%= @profiles.avatar %>" width="100%" height= "100%">
 			</div>
 		<div id="profile-user">
 			<p><%= @user.fname %></p>
 		</div>
 
-		<form class="new_post" method="POST" action="/new-post">
+		<form class="new_post" method="POST" action="/newpost">
 		  <label for="text">Create your post here</label>
-		  <textarea name="comment_text"></textarea>
+		  <textarea name="comment_text"></textarea><br>
 		  <input type="submit">
 		</form>
 
@@ -28,10 +28,6 @@
 		<br>
 		<br>
 		<br>
-		<div id="test">
-			<% @posts.each do |post| %>
-  			<p class="comment"><%= post.comment %></p>
-<!--   			Create a link called edit with the post id in the link to go to something like /post/:id/edit -->			<% end %>
-		</div>
+		
 		<script type="text/javascript" src="../public/script.js"></script>
 	</body>
