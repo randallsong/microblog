@@ -17,10 +17,13 @@ get '/' do
 end
 
 get '/login' do
-	session.clear
+	@users = User.all
+	@profiles = Profile.all
+	@posts = Post.all
+	erb :login
 end
 
-post 'login' do
+post '/login' do
 	@user = User.where(fname: params[:fname]).first
 	if @user && @user.pwd == params[:pwd]
 		session[:user_id] = @user.id
@@ -32,19 +35,20 @@ post 'login' do
 	redirect '/community'
 end
 
-get '/loginfailed' do
-	@user = User.find(session[:user_id])
-	@posts = Post.all
-	@profiles = Profile.all
-	erb :loginfailed
-end
-
 get '/community' do
 	@user = User.find(session[:user_id])
 	@posts = Post.all
 	@profiles = Profile.find(session[:user_id])
 	erb :community
 end	
+
+
+get '/loginfailed' do
+	@user = User.find(session[:user_id])
+	@posts = Post.all
+	@profiles = Profile.all
+	erb :loginfailed
+end
 
 get '/profile' do
 	@user = User.find(session[:user_id])
@@ -72,15 +76,15 @@ get '/signup' do
 end
 
 post '/signup' do
-	if params[:fname] != "" && params[:pwd] != ""
-		User.create(fname: params[:fname], pwd: params[:pwd])
+	if (params[:fname] != "" && params[:pwd] != "") && ( User.where(fname: params[:fname]).exists? )
+		redirect '/signup'
 	else 
-	redirect 'signup'
-end
-	@user = User.where(fname: params[:fname]).first
-	session[:user_id] = @user.id
-	current_user
-	erb :community
+		User.create(fname: params[:fname], pwd: params[:pwd])
+		@user = User.where(fname: params[:fname]).first
+		session[:user_id] = @user.id
+		current_user
+		erb :community
+	end
 end
 
 def current_user
