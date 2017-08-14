@@ -5,20 +5,18 @@
 		<title>Community</title>
 	</head>
 	<body id="community-body">
-		<div id="community-background">
-			<div id="user-card">
-				<div id="avatar"></div>
-				<div id="username"></div>
-			</div>
-			<div id="welcome">
+		<div id="community-background"></div>
+		<div id="user-card">
+				<div id="avatar"><img src="<%= @profiles.avatar %>" width=100px height=100px></div>
+				<div id="username"><%= @user.fname %></div>
+		<div id="welcome">
 				<h1>Welcome Back  <%= @user.fname %> </h1>
-			</div>
-				<div id="latestposts">
-			<p>Here are the latest posts:</p>
+		</div>
+		<p id="latestposts">Here are the latest posts:</p>
 
 	<div id="test">
 	<% @posts.reverse_each do |post| %>
-	<p> Posted by: <%= post.user.fname %></p><br>
+	<p class="poster"> Posted by: <%= post.user.fname %></p><br>
   	<p class="comment"><%= post.comment %></p>
 	<% end %>
 	</div>
