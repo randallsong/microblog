@@ -1,9 +1,9 @@
 body{
-	background-attachment: fixed;
 	background-image: url("../Images/background.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-color: black;
+	background-attachment: fixed;
 	width: 100%;
 }
 
@@ -25,10 +25,18 @@ body{
 }
 
 #community-body{
-	background-attachment: fixed;
 	background-image: url("../Images/community-background.png");
 	background-size: cover;
+	background-attachment: fixed;
 	width: 100%;
+}
+
+#latestposts{
+	position: relative;
+	font-size: 24px;
+	width: 1000px;
+	top: 0px;
+	left: 200px;
 }
 
 #user-card{
@@ -36,7 +44,7 @@ body{
 	display: block;
 	height: 150px;
 	width: 300px;
-	left: 250px;
+	left: 300px;
 	top: 50px;
 	position: absolute;
 	border-style: ridge;
@@ -77,8 +85,8 @@ body{
 
 #welcome{
 	position: relative;
-	left: 40%;
-	top: 200px;
+	left: 0px;
+	width: 1000px;
 	color: white;
 }
 
@@ -104,7 +112,7 @@ body{
 	border-color: grey;
 	border-style: solid;
 	top: 10px;
-	left: 10px;
+	left: 250px;
 }
 
 #profile-user{
@@ -136,10 +144,26 @@ body{
 	font-size: 24px;
 	position: relative;
 	left: 30%;
+	top: 45px;
 	display: inline-block;
-	width: 70%;
+	width: 800px;
 	height: 200px;
 	border-style: solid;
 	border-color: grey;
 	border-width: 2px;
+}
+
+.poster{
+	font-size: 24px;
+	position: relative;
+	left: 30%;
+	top: 90px;
+	display: inline-block;
+
+}
+
+.postcomment{
+	position: relative;
+	z-index: 10;
+
 }

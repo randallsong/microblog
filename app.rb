@@ -50,25 +50,15 @@ get '/loginfailed' do
 	erb :loginfailed
 end
 
-get '/profile' do
-	@user = User.find(session[:user_id])
-	@posts = Post.all
-	@profiles = Profile.all
-	erb :profile
-end
-
 get '/edit' do
-	@user = User.find(session[:user_id])
-	@posts = Post.all
-	@profiles = Profile.all
 	erb :edit
 end
 
-get '/newpost' do
+get '/profile' do
 	@user = User.find(session[:user_id])
 	@posts = Post.all
-	@profiles = Profile.all
-	erb :newpost
+	@profiles = Profile.find(session[:user_id])
+	erb :profile
 end
 
 get '/signup' do
@@ -90,6 +80,27 @@ post '/signup' do
 	end
 end
 
+get '/loginfailed' do
+	erb :loginfailed
+end
+
+get 'signup' do
+	erb :signup
+end
+
+
+post '/community' do 
+	@user = User.where(fname: params[:fname]).first
+	if @user && @user.pwd == params[:pwd]
+		session[:user_id] = @user.id
+		flash[:notice] = "You've been signed in successfully."
+	else
+		flash[:alert] = "Authorization failed"
+		redirect '/loginfailed'
+	end
+	redirect '/community'
+end
+
 def current_user
 	if session[:user_id]
 		@current_user = User.find(session[:user_id])
@@ -97,6 +108,7 @@ def current_user
 		redirect '/signin'
 	end
 end
+
 
 def display_users
 	User.all

@@ -1,17 +1,13 @@
 	<body id="community-body">
-		<div id="community-background">
-			<div id="profile-avatar"></div>
-		</div>
+		<div id="community-background"></div>
+		<div id="profile-avatar">
+				<img src="<%= @profiles.avatar %>" width="100%" height= "100%">
+			</div>
 		<div id="profile-user">
-			<p>Username</p>
+			<p><%= @user.fname %></p>
 		</div>
 
-		<div id="navbar">
-			<div class="edit">Edit</div>
-			<div class="delete">Delete</div>
-		</div>
-
-		<form method="POST" action="/community">
+		<form class="postcomment" method="POST" action="/community">
 		  <label for="text">Post a comment here</label>
 		  <textarea name="comment_text"></textarea>
 		  <input type="submit">
@@ -26,6 +22,16 @@
 		</div>
 		<div id="delete-button">
 			<button>Delete Profile</button>
+		</div>
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<div id="test">
+			<% @posts.each do |post| %>
+  			<p class="comment"><%= post.comment %></p>
+			<% end %>
 		</div>
 		<script type="text/javascript" src="../public/script.js"></script>
 	</body>
