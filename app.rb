@@ -38,7 +38,7 @@ end
 get '/community' do
 	@user = User.find(session[:user_id])
 	@posts = Post.all
-	@profiles = Profile.find(session[:user_id])
+	@profiles = Profile.find_by_user_id(@user.id)
 	erb :community
 end	
 
@@ -51,8 +51,13 @@ get '/loginfailed' do
 end
 
 get '/edit' do
+	@user = User.find(session[:user_id])
 	erb :edit
 end
+
+
+
+
 
 get '/profile' do
 	@user = User.find(session[:user_id])
@@ -71,9 +76,10 @@ post '/signup' do
 	else 
 		User.create(fname: params[:fname], pwd: params[:pwd])
 		@user = User.where(fname: params[:fname]).first
+		Profile.create(:user_id => @user.id , :avatar => "Images/pic1.png")
 		session[:user_id] = @user.id
 		current_user
-		erb :community
+		redirect "/community"
 	end
 end
 
@@ -98,6 +104,44 @@ post '/community' do
 	redirect '/community'
 end
 
+
+post '/new-post' do
+	@user = session[:user_id]
+	@post = Post.create(:comment => params[:comment_text])
+	redirect '/profile'
+end
+
+# # editing a post
+# get '/posts/:id/editpost' do
+# 	@user = session[:user_id]
+# 	@post = Post.find_by_id(params[:id])
+# 	erb :editpost
+# end
+
+# patch '/posts/:id' do
+# 	@user = session[:user_id]
+# 	@post = Post.find_by_id(params[:id])
+# 	@post.content = params[:content]
+# 	@post.save
+# 	redirect to "/profile"
+# end
+
+# # deleting a post
+# delete '/posts/:id/delete' do
+# 	@post = Post.find_by_id(params[:id])
+# 	@post.delete
+# 	redirect to '/posts'
+# end
+
+
+post '/edit' do #edit action
+  @user = User.find(session[:user_id])
+  @user.fname = params[:newname]
+  @user.save
+  redirect to "/profile"
+end
+
+
 def current_user
 	if session[:user_id]
 		@current_user = User.find(session[:user_id])
@@ -121,3 +165,4 @@ def destroy_user
 	else
 	end
 end
+
