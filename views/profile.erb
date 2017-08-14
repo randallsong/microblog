@@ -8,6 +8,18 @@
 			<p><%= @user.fname %></p>
 		</div>
 
+		<div id="navbar">
+			<div class="edit">Edit</div>
+			<div class="delete">Delete</div>
+		</div>
+
+		<form method="POST" action="/community">
+		  <label for="text">Post a comment here</label>
+		  <textarea name="comment_text"></textarea>
+		  <input type="submit">
+		</form>
+
+
 		<div id="log_out_button">
 			<button>Log Out</button>
 		</div>

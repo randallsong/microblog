@@ -1,27 +1,32 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="../public/css/micro.css">
+		<title>Community</title>
+	</head>
 	<body id="community-body">
-		<div id="community-background">	</div>
+		<div id="community-background">
 			<div id="user-card">
-				<div id="avatar">
-					<img src = "<%= @profiles.avatar %>" width="100px" height= "100px" />
-				</div>
-				<div id="username"><%= @user.fname %></div>
+				<div id="avatar"></div>
+				<div id="username"></div>
 			</div>
 			<div id="welcome">
-				<h3>Welcome Back  <%= @user.fname %> </h3>
+				<h1>Welcome Back  <%= @user.fname %> </h1>
 			</div>
 				<div id="latestposts">
 			<p>Here are the latest posts:</p>
 
 	<div id="test">
-	<% @posts.each do |post| %>
+	<% @posts.reverse_each do |post| %>
+	<p> Posted by: <%= post.user.fname %></p><br>
   	<p class="comment"><%= post.comment %></p>
 	<% end %>
 	</div>
 	
 		</div>
-	
+		</div>
 		<div id="log_out_button">
 			<button>Log Out</button>
 		</div>
 	</body>
+</html>
