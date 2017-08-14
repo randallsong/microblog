@@ -38,18 +38,26 @@ end
 get '/community' do
 	@user = User.find(session[:user_id])
 	@posts = Post.all
-	@profiles = Profile.find(session[:user_id])
+	@profiles = Profile.find_by_user_id(@user.id)
 	erb :community
 end	
 
 
 get '/loginfailed' do
+	@user = User.find(session[:user_id])
+	@posts = Post.all
+	@profiles = Profile.all
 	erb :loginfailed
 end
 
 get '/edit' do
+	@user = User.find(session[:user_id])
 	erb :edit
 end
+
+
+
+
 
 get '/profile' do
 	@user = User.find(session[:user_id])
@@ -76,11 +84,21 @@ post '/signup' do
 	else 
 		User.create(fname: params[:fname], pwd: params[:pwd])
 		@user = User.where(fname: params[:fname]).first
+		Profile.create(:user_id => @user.id , :avatar => "Images/pic1.png")
 		session[:user_id] = @user.id
 		current_user
-		erb :community
+		redirect "/community"
 	end
 end
+
+get '/loginfailed' do
+	erb :loginfailed
+end
+
+get 'signup' do
+	erb :signup
+end
+
 
 post '/community' do 
 	@user = User.where(fname: params[:fname]).first
@@ -94,32 +112,35 @@ post '/community' do
 	redirect '/community'
 end
 
+
 get '/newpost' do
 	@user = User.find(session[:user_id])
 	@profiles = Profile.find(session[:user_id])
 	erb :newpost
 end
 
-post '/newpost' do
+
+post '/new-post' do
+
 	@user = session[:user_id]
 	@post = Post.create(:user_id => @user, :comment => params[:comment_text])
 	redirect '/profile'
 end
 
-# editing a post
-get '/posts/:id/editpost' do
-	@user = session[:user_id]
-	@post = Post.find_by_id(params[:id])
-	erb :editpost
-end
+# # editing a post
+# get '/posts/:id/editpost' do
+# 	@user = session[:user_id]
+# 	@post = Post.find_by_id(params[:id])
+# 	erb :editpost
+# end
 
-patch '/posts/:id' do
-	@user = session[:user_id]
-	@post = Post.find_by_id(params[:id])
-	@post.content = params[:content]
-	@post.save
-	redirect to "/profile"
-end
+# patch '/posts/:id' do
+# 	@user = session[:user_id]
+# 	@post = Post.find_by_id(params[:id])
+# 	@post.content = params[:content]
+# 	@post.save
+# 	redirect to "/profile"
+# end
 
 get '/delete' do
 	@user = session[:user_id]
@@ -127,6 +148,15 @@ get '/delete' do
 end
 
 post 'delete' do
+end
+
+
+
+post '/edit' do #edit action
+  @user = User.find(session[:user_id])
+  @user.fname = params[:newname]
+  @user.save
+  redirect to "/profile"
 end
 
 
@@ -138,11 +168,6 @@ def current_user
 	end
 end
 
-def log_out
-	if current_user
-		session[:user_id] = nil
-	end
-end
 
 def display_users
 	User.all
@@ -157,5 +182,8 @@ def destroy_user
 		session[:user_id] = nil
 	else
 	end
+
 	redirect 'signin'
+end
+
 end
