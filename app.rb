@@ -70,6 +70,14 @@ get '/signup' do
 	erb :signup
 end
 
+get '/logoutpage' do
+	erb :logoutpage
+end
+
+post '/logoutpage' do
+	log_out
+end
+
 post '/signup' do
 	if (params[:fname] != "" && params[:pwd] != "") && ( User.where(fname: params[:fname]).exists? )
 		redirect '/signup'
@@ -105,9 +113,17 @@ post '/community' do
 end
 
 
+get '/newpost' do
+	@user = User.find(session[:user_id])
+	@profiles = Profile.find(session[:user_id])
+	erb :newpost
+end
+
+
 post '/new-post' do
+
 	@user = session[:user_id]
-	@post = Post.create(:comment => params[:comment_text])
+	@post = Post.create(:user_id => @user, :comment => params[:comment_text])
 	redirect '/profile'
 end
 
@@ -126,12 +142,14 @@ end
 # 	redirect to "/profile"
 # end
 
-# # deleting a post
-# delete '/posts/:id/delete' do
-# 	@post = Post.find_by_id(params[:id])
-# 	@post.delete
-# 	redirect to '/posts'
-# end
+get '/delete' do
+	@user = session[:user_id]
+	erb :delete
+end
+
+post 'delete' do
+end
+
 
 
 post '/edit' do #edit action
@@ -164,5 +182,8 @@ def destroy_user
 		session[:user_id] = nil
 	else
 	end
+
+	redirect 'signin'
 end
 
+end
