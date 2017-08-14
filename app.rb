@@ -72,6 +72,9 @@ get '/newpost' do
 end
 
 get '/signup' do
+	@user = User.find(session[:user_id])
+	@posts = Post.all
+	@profiles = Profile.all
 	erb :signup
 end
 
