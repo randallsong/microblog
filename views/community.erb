@@ -18,6 +18,7 @@
 
 	<div id="test">
 	<% @posts.reverse_each do |post| %>
+	<p> Posted by: <%= post.user.fname %></p><br>
   	<p class="comment"><%= post.comment %></p>
 	<% end %>
 	</div>
