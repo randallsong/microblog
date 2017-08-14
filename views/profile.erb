@@ -7,11 +7,11 @@
 			<p><%= @user.fname %></p>
 		</div>
 
-		<form class="postcomment" method="POST" action="/community">
-		  <label for="text">Post a comment here</label>
-		  <textarea name="comment_text"></textarea>
-		  <input type="submit">
-		</form>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 
 
 		<div id="log_out_button">
@@ -29,6 +29,7 @@
 		<br>
 		<br>
 		<div id="test">
+			<div class="myposts">My Posts:</div>
 			<% @posts.each do |post| %>
   			<p class="comment"><%= post.comment %></p>
 			<% end %>

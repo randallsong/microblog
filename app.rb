@@ -56,7 +56,7 @@ end
 
 get '/profile' do
 	@user = User.find(session[:user_id])
-	@posts = Post.all
+	@posts = @user.posts
 	@profiles = Profile.find(session[:user_id])
 	erb :profile
 end
