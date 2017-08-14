@@ -7,11 +7,11 @@
 			<p><%= @user.fname %></p>
 		</div>
 
-		<form class="new_post" method="POST" action="/new-post">
-		  <label for="text">Create a new post here</label>
-		  <textarea name="comment_text"></textarea>
-		  <input type="submit">
-		</form>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 
 
 		<div id="log_out_button">
@@ -29,6 +29,7 @@
 		<br>
 		<br>
 		<div id="test">
+			<div class="myposts">My Posts:</div>
 			<% @posts.each do |post| %>
   			<p class="comment"><%= post.comment %></p>
 <!--   			Create a link called edit with the post id in the link to go to something like /post/:id/edit -->			<% end %>

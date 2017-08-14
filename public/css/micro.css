@@ -12,7 +12,7 @@ body{
 }
 
 #login-box{
-	display: box;
+	display: block;
 	position: relative;
 	width: 500px;
 	background-color: pink;
@@ -22,6 +22,10 @@ body{
 	border-radius: 35px;
 	left: 33%;
 	top: 170px;
+}
+
+.profilebutton{
+	position: absolute;
 }
 
 #community-body{
@@ -140,13 +144,18 @@ body{
 	right: 10px;
 }
 
+#test{
+	display: block;
+	width: 1000px;
+}
+
 .comment{
 	font-size: 24px;
 	position: relative;
 	left: 30%;
 	top: 45px;
-	display: inline-block;
-	width: 800px;
+	display: block;
+	width: 50%;
 	height: 200px;
 	border-style: solid;
 	border-color: grey;
@@ -162,8 +171,8 @@ body{
 
 }
 
-.postcomment{
+.myposts{
 	position: relative;
-	z-index: 10;
-
+	top: 30px;
+	left: 250px;
 }
