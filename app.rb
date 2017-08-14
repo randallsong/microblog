@@ -44,9 +44,6 @@ end
 
 
 get '/loginfailed' do
-	@user = User.find(session[:user_id])
-	@posts = Post.all
-	@profiles = Profile.all
 	erb :loginfailed
 end
 
@@ -56,15 +53,12 @@ end
 
 get '/profile' do
 	@user = User.find(session[:user_id])
+	@profile = @user.profile
 	@posts = Post.all
-	@profiles = Profile.find(session[:user_id])
 	erb :profile
 end
 
 get '/signup' do
-	@user = User.find(session[:user_id])
-	@posts = Post.all
-	@profiles = Profile.all
 	erb :signup
 end
 
@@ -80,15 +74,6 @@ post '/signup' do
 	end
 end
 
-get '/loginfailed' do
-	erb :loginfailed
-end
-
-get 'signup' do
-	erb :signup
-end
-
-
 post '/community' do 
 	@user = User.where(fname: params[:fname]).first
 	if @user && @user.pwd == params[:pwd]
@@ -101,6 +86,34 @@ post '/community' do
 	redirect '/community'
 end
 
+post '/new-post' do
+	@user = session[:user_id]
+	@post = Post.create(:comment => params[:comment_text])
+	redirect '/profile'
+end
+
+# editing a post
+get '/posts/:id/editpost' do
+	@user = session[:user_id]
+	@post = Post.find_by_id(params[:id])
+	erb :editpost
+end
+
+patch '/posts/:id' do
+	@user = session[:user_id]
+	@post = Post.find_by_id(params[:id])
+	@post.content = params[:content]
+	@post.save
+	redirect to "/profile"
+end
+
+# # deleting a post
+# delete '/posts/:id/delete' do
+# 	@post = Post.find_by_id(params[:id])
+# 	@post.delete
+# 	redirect to '/posts'
+# end
+
 def current_user
 	if session[:user_id]
 		@current_user = User.find(session[:user_id])
@@ -109,6 +122,11 @@ def current_user
 	end
 end
 
+def log_out
+	if current_user
+		session[:user_id] = nil
+	end
+end
 
 def display_users
 	User.all

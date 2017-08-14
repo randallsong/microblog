@@ -1,3 +1,8 @@
+<!-- you would build out a form with the text that already exists in the post  -->
+and then have a submit button to do a patch method for the form to the url /posts/:id
+
+make sure in your form you have the name content for your NEW comment
+
 	<body id="community-body">
 		<div id="community-background"></div>
 		<div id="profile-avatar">
@@ -7,9 +12,9 @@
 			<p><%= @user.fname %></p>
 		</div>
 
-		<form class="new_post" method="POST" action="/new-post">
-		  <label for="text">Create a new post here</label>
-		  <textarea name="comment_text"></textarea>
+		<form class="new_post" method="POST" action="/editpost">
+		  <label for="text">Edit your post here</label>
+		  <textarea name="comment_text"><%= comment %></textarea>
 		  <input type="submit">
 		</form>
 
