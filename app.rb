@@ -53,13 +53,8 @@ end
 
 get '/profile' do
 	@user = User.find(session[:user_id])
-<<<<<<< HEAD
-	@profile = @user.profile
-	@posts = Post.all
-=======
 	@posts = @user.posts
 	@profiles = Profile.find(session[:user_id])
->>>>>>> 94335b9f6b35bad824282a62603299ee0515d3cc
 	erb :profile
 end
 
