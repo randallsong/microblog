@@ -60,9 +60,6 @@ get '/edit' do
 	erb :edit
 end
 
-post 'edit' do
-	
-
 get '/newpost' do
 	@user = User.find(session[:user_id])
 	@posts = Post.all
@@ -76,7 +73,7 @@ end
 
 post '/signup' do
 	if params[:fname] != "" && params[:pwd] != ""
-		User.create(fname params[:fname], pwd params[:pwd])
+		User.create(fname: params[:fname], pwd: params[:pwd])
 	else 
 	redirect 'signup'
 end
@@ -84,10 +81,13 @@ end
 	session[:user_id] = @user.id
 	current_user
 	erb :community
+end
 
 def current_user
 	if session[:user_id]
 		@current_user = User.find(session[:user_id])
+	else
+		redirect '/signin'
 	end
 end
 
@@ -102,5 +102,6 @@ def destroy_user
 		@current_user_id = @user.id
 		@currentUser.destroy
 		session[:user_id] = nil
+	else
 	end
 end
