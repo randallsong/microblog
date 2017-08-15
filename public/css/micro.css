@@ -152,14 +152,16 @@ body{
 .comment{
 	font-size: 24px;
 	position: relative;
+	background-color: gold;
 	left: 30%;
 	top: 45px;
 	display: block;
 	width: 50%;
 	height: 200px;
 	border-style: solid;
-	border-color: grey;
-	border-width: 2px;
+	border-color: gold;
+	border-radius: 20px;
+	border-width: 20px;
 }
 
 .poster{
@@ -175,4 +177,18 @@ body{
 	position: relative;
 	top: 30px;
 	left: 250px;
+}
+
+
+.new_post{
+	z-index: 11;
+	position: absolute;
+	left: 30%;
+	top: 50%;
+}
+
+#create_new_button{
+	position: absolute;
+	right: 300px;
+	top: 300px;
 }

@@ -185,5 +185,3 @@ def destroy_user
 
 	redirect 'signin'
 end
-
-end
