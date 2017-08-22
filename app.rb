@@ -145,11 +145,6 @@ def current_user
 	end
 end
 
-def display_users
-	User.all
-end
-
-
 def destroy_user 
 	current_user
 
